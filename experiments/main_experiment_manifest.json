@@ -1,0 +1,86 @@
+{
+  "paper": "PSEE ICASSP 2027",
+  "datasets": {
+    "wear": 18,
+    "wetlab": 22,
+    "rwhar": 15,
+    "sbhar": 30
+  },
+  "point_sampling": {
+    "mode": "gaussian",
+    "seed": 3407,
+    "standard_deviation": "one sixth of the action duration"
+  },
+  "evaluation": {
+    "detector_tiou_thresholds": "0.3:0.1:0.7",
+    "pseudo_boundary_metric": "mean tIoU against the paired ground-truth action instance"
+  },
+  "main_experiments": [
+    {
+      "paper_tables": ["Table 1", "Table 2"],
+      "name": "PSEE + SlimSTAD-1D",
+      "datasets": ["wear", "wetlab", "rwhar", "sbhar"],
+      "psee_runners": [
+        "psee_localizer/run_psee_lowparam_slimstad1d_wear_queue.py",
+        "psee_localizer/run_psee_lowparam_slimstad1d_extra_queue.py"
+      ],
+      "localizer": [
+        "psee_localizer/weak_sensor_curve.py",
+        "psee_localizer/export_psee_lowparam_for_slimstad.py",
+        "psee_localizer/export_psee_lowparam_tal4har_xrf_for_slimstad.py"
+      ],
+      "detector": "SlimSTAD-1D",
+      "reliability_mode": "segment_reliability",
+      "tags": ["psee_lowparam_v1_20260830"]
+    },
+    {
+      "paper_tables": ["Table 2"],
+      "name": "PSEE + ActionFormer",
+      "datasets": ["wear", "wetlab", "rwhar", "sbhar"],
+      "pseudo_segments": "PSEE + SlimSTAD-1D entry points above",
+      "detector": "ActionFormer",
+      "runner": "detectors/run_psee_actionformer_weighted.py",
+      "tags": ["psee_lowparam_actionformer_weighted_20260901"]
+    },
+    {
+      "paper_tables": ["Table 2"],
+      "name": "PSEE + TriDet",
+      "datasets": ["wear", "wetlab", "rwhar", "sbhar"],
+      "pseudo_segments": "PSEE + SlimSTAD-1D entry points above",
+      "detector": "TriDet",
+      "runner": "detectors/run_psee_tridet_weighted.py",
+      "tags": ["psee_lowparam_tridet_weighted_20260902"]
+    },
+    {
+      "paper_tables": ["Table 1", "Fig. 2"],
+      "name": "SFNet-Adapt + SlimSTAD-1D",
+      "datasets": ["wear", "wetlab", "rwhar", "sbhar"],
+      "detector": "SlimSTAD-1D",
+      "runners": [
+        "baselines/run_sfnet_adapt_twostage_slimstad1d_queue.py",
+        "baselines/run_sfnet_adapt_twostage_slimstad1d_queue_yjx164.py"
+      ],
+      "tags": ["sfnet_adapt_imu_slimstad1d_clean_20260902"]
+    },
+    {
+      "paper_tables": ["Table 1", "Fig. 2"],
+      "name": "OPOT-Adapt + SlimSTAD-1D",
+      "datasets": ["wear", "wetlab", "rwhar", "sbhar"],
+      "detector": "SlimSTAD-1D",
+      "runner": "baselines/run_opot_twostage_slimstad1d_queue.py",
+      "tags": ["opot_tal_gaussian_slimstad1d_coordfix_20260902"]
+    },
+    {
+      "paper_tables": ["Fig. 2"],
+      "name": "Pseudo-boundary quality evaluation",
+      "datasets": ["wear", "wetlab", "rwhar", "sbhar"],
+      "tool": "tools/pseudo_boundary_quality.py"
+    }
+  ],
+  "external_runtime_roots": [
+    "camera_baseline/actionformer",
+    "camera_baseline/tridet",
+    "STAD",
+    "dataset and checkpoint roots"
+  ]
+}

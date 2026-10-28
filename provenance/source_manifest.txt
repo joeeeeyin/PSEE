@@ -1,0 +1,37 @@
+Archive created 2026-10-26 from yjx163 and yjx164.
+
+Remote source SHA-256 values (the copied files have the same hashes):
+
+3b5bcd2f87c55ba61aa18eba197ef0b6e6e4c4a79e245dced3c0f982a8df36a1  yjx163:/home/yinjiaxi/SlimSTAD/STAD-main/tools/run_psee_lowparam_slimstad1d_wear_queue.py
+a724a96eccc2ac250e840c3a91c2dc095a0e4a558be9816369a85cceedf78271  yjx163:/home/yinjiaxi/SlimSTAD/STAD-main/tools/run_psee_lowparam_slimstad1d_extra_queue.py
+32de0ee1b7cbe84a9798f87eb8e4e0c65bc13141a4df6d5f00ad606a6da487a0  yjx163:/home/yinjiaxi/detr_e2e_tad/tad/weak_sensor_curve.py
+fd8bdc4eaf8c0f5074fdf54f7c9c57d31529745b65493b8138e4bdce8bca0945  yjx163:/home/yinjiaxi/detr_e2e_tad/tools/export_psee_lowparam_for_slimstad.py
+e1ee3940e364d517369745f14c2a0dc12c2b1470628fdfc7f333aacfd6f2f217  yjx163:/home/yinjiaxi/detr_e2e_tad/tools/export_psee_lowparam_tal4har_xrf_for_slimstad.py
+52d1ae10c462107295267f2be2f27501c5414c2edfae542797361382fd8005b0  yjx163:/home/yinjiaxi/SlimSTAD/STAD-main/STAD/thumos14/multisegment_loss_weighted.py
+1213402dad63b7dea835c7e8e4ab6963a3af4367af697d2c5be698d6519a7928  yjx163:/home/yinjiaxi/SlimSTAD/STAD-main/STAD/common/thumos_dataset_weighted.py
+d72ac3e4482e952851065042115d55dc410096cce22243fe33602fb44e8d0b17  yjx163:/home/yinjiaxi/SlimSTAD/STAD-main/tools/run_opot_twostage_slimstad1d_queue.py
+8f0c95aa4557c084c8e70a957d4d2dc0b3e9b563f6128db726484dd34615337a  yjx163:/home/yinjiaxi/SlimSTAD/STAD-main/tools/run_sfnet_adapt_twostage_slimstad1d_queue.py
+3cb40df2e29e64719507cc4d49ce9c6d7e999517e6966a1743a8c1c4d8913ea1  yjx164:/home/yinjiaxi/pointsupervision/STAD-main/tools/run_sfnet_adapt_twostage_slimstad1d_queue.py
+3165bf4f87eae78f8539512cf74ffe5445808426ccf1409771f3f92505b4b99a  yjx163:/home/yinjiaxi/tal_for_har/tools/run_psee_actionformer_weighted.py
+3f27c8e823384f39334daed2024ddf65088dd221ffa370c4aef5d470b401e05f  yjx163:/home/yinjiaxi/tal_for_har/tools/run_psee_tridet_weighted.py
+8036c63eff4838eb309f4655d829411f2f4a1277e8e559d1cfb01d795060eeca  yjx124:/home/yinjiaxi/SlimSTAD/STAD-main/tools/run_pointcls_twostage_slimstad1d_queue.py
+dda1836abcda68ef779990324e953b4a3ae93a05040267f038c04103ca2be819  yjx124:/home/yinjiaxi/SlimSTAD/STAD-main/tools/run_point_transition_classifier_baseline.py
+
+The yjx164 SFNet hash differs only because its copy contains machine-specific root paths and a fixed interpreter invocation; its algorithmic tag and results are the same `sfnet_adapt_imu_slimstad1d_clean_20260902` run family.
+
+Git HEADs observed during inspection (not sufficient by themselves because the working trees are dirty):
+
+yjx163 SlimSTAD/STAD-main: 866d4b4df875db26f1d9be8871c8582a091d3c26
+yjx163 detr_e2e_tad:       29901c51d7fe8712168b8d0d64351170bc0f83e0
+yjx163 tal_for_har:        c0a14d2bbd950194ca698f12f3b86f374261b518
+
+Local archive repairs applied after copying the remote sources:
+
+- 2026-10-27: the canonical low-parameter PSEE exporter and the WEAR/TAL4HAR
+  queues now default to and explicitly pass `segment_reliability`, matching
+  the submitted mainline. `boundary_reliability` remains an explicit legacy
+  option. The hashes above identify the original remote source snapshot, not
+  these repaired local files.
+- 2026-10-27: added `experiments/main_experiment_manifest.json` and
+  `experiments/check_main_experiment.py` to validate the submitted main
+  experiment entry points.
